@@ -1,0 +1,118 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  background: transparent;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.inputGroup {
+  position: relative;
+  padding-top: 20px; /* Space for floating label */
+}
+
+.input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: 24px;
+  padding: 10px 0;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Floating Label */
+.label {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input:focus ~ .label,
+.input:not(:placeholder-shown) ~ .label {
+  top: -5px;
+  font-size: 11px;
+  color: var(--color-indigo);
+  letter-spacing: 0.2em;
+}
+
+/* Thin animated gradient border on active/focused input */
+.animatedBorder {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-indigo), var(--color-gold));
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input:focus ~ .animatedBorder {
+  width: 100%;
+}
+
+.submitBtn {
+  margin-top: 20px;
+  align-self: flex-start;
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 18px 48px;
+  border-radius: 40px; /* Pill shape */
+  font-family: var(--font-sans);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* Shimmer animation */
+.submitBtn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245, 240, 232, 0.1),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+}
+
+.submitBtn:hover::after {
+  left: 150%;
+  transition: left 1s ease;
+}
+
+.submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

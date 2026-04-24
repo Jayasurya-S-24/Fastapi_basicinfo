@@ -1,0 +1,28 @@
+.tickerWrap {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ticker {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 30s linear infinite;
+}
+
+.tickerItem {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--color-indigo);
+  padding-right: 20px;
+  font-weight: 500;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Assumes items are repeated enough to cover width smoothly */
+}
